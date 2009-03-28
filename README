@@ -1,0 +1,62 @@
+= function_importer
+writing explicitly need function for a module. and support rename.
+
+== Example
+  require 'rubygems'
+  require 'function_importer'
+  module Utils
+    extend FunctionExporter
+    
+    def escape str
+      "escaped_#{str}"
+    end
+  end
+
+  module Foo
+    Utils.export self, :escape
+
+    def run
+      p(escape('str')) #=> "escaped_str"
+    end
+  end
+
+  # you can rename methods when argument is Hash.
+  module Bar
+    Utils.export self, :escape => :my_escape
+
+    def run
+      p(my_escape('str')) #=> "escaped_str"
+    end
+  end
+
+  # or syntax suger.
+  module Baz
+    extend FunctionImporter
+    import_function Utils, :escape
+
+    def run
+      p(escape('str')) #=> "escaped_str"
+    end
+  end
+
+  # apply to class method.
+  module Baz
+    extend FunctionImporter
+    import_module_function Utils, :escape
+
+    def self.run
+      p(escape('str')) #=> "escaped_str"
+    end
+  end
+
+== Descripotin
+restrict importing methods and rename methods when include module.
+
+== SEE ALSO
++module-import+: I'm not like this module interface. (For example, pollute Kernel#import ).
+
+== Copyright
+
+Author:: Keiji, Yoshimi <walf443 at gmail.com>
+License:: you can redistribute it and/or modify it under the same terms as Ruby itself.
+
