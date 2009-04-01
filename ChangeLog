@@ -1,3 +1,21 @@
+commit 1e51372c65043d5e2463a37bee9d3877dfa82190
+Author: Keiji, Yoshimi <walf443@gmail.com>
+Date:   Wed Apr 1 09:20:26 2009 +0900
+
+    It should raise some Exception when you specify unexist method in export.
+
+commit 8d0dc0cf4dc6035c6aaefdaa975f94958617a996
+Author: Keiji, Yoshimi <walf443@gmail.com>
+Date:   Sat Mar 28 20:25:21 2009 +0900
+
+    added dummy spec/spec.opts
+
+commit e4f54a3ee503eb3847ce9f9b763064420644f180
+Author: Keiji, Yoshimi <walf443@gmail.com>
+Date:   Sat Mar 28 20:12:44 2009 +0900
+
+    released 0.0.1
+
 commit 1e41d415433a45ecac051021ac62fd88345c428c
 Author: Keiji, Yoshimi <walf443@gmail.com>
 Date:   Sat Mar 28 20:00:10 2009 +0900
