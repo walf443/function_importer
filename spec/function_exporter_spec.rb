@@ -40,4 +40,10 @@ describe FunctionExporter do
       @export_mod.instance_methods.any? {|i| i.to_s == 'my_escape' }.should be_true
     end
   end
+
+  it 'should raise Exception when unexist method' do
+    lambda {
+      @module.create_export_module :no_exist_method_in_module
+    }.should raise_error(FunctionExporter::NameError)
+  end
 end

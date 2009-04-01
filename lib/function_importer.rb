@@ -1,5 +1,8 @@
 # add module a method to export function.
 module FunctionExporter
+  # raise this exception when method is not exist in a module.
+  class NameError < ::NameError; end
+
   # Example:
   #   module Utils
   #     extend FunctionExporter
@@ -55,9 +58,15 @@ module FunctionExporter
       end
     end
 
+    orig_mod = self
     parent_mod.module_eval do
       # renate method.
       method_of.each do |key, val|
+        begin
+          raise NameError, "no such method #{key} exist in #{orig_mod}" unless instance_method(key)
+        rescue ::NameError => e
+          raise NameError, "no such method #{key} exist in #{orig_mod}"
+        end
         next if val.kind_of? TrueClass
         alias_method val, key
         undef_method key
