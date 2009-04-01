@@ -358,6 +358,8 @@ function.
 
 <p></p>
 
+<h1>Child modules and classes</h1><p>Class <a href="FunctionExporter/NameError.html" class="link">FunctionExporter::NameError</a><br />
+</p>
 
 
 
@@ -378,43 +380,49 @@ create_export_module
 </a>
 </h3>
 
-<p class="source_link" id="M000002-show-link"><a onclick="toggle('M000002-source'); toggleText('M000002-link'); return false;" href="#" id="M000002-link">Show source...</a></p><div class="source" id="M000002-source"><pre>    <span class="ruby-comment cmt"># File lib/function_importer.rb, line 36</span>
-36:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_export_module</span> <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
-37:     <span class="ruby-identifier">parent_mod</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
-38: 
-39:     <span class="ruby-identifier">method_of</span> = {};
-40:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
-41:     <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hash</span>
-42:       <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
-43:         <span class="ruby-identifier">method_of</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">val</span>
-44:       <span class="ruby-keyword kw">end</span>
-45:     <span class="ruby-keyword kw">else</span>
-46:       <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> 
-47:         <span class="ruby-identifier">method_of</span>[<span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-keyword kw">true</span>
-48:       <span class="ruby-keyword kw">end</span>
-49:     <span class="ruby-keyword kw">end</span>
-50: 
-51:     <span class="ruby-identifier">no_need_methods</span> = []
-52:     <span class="ruby-identifier">parent_mod</span>.<span class="ruby-identifier">instance_methods</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">meth</span><span class="ruby-operator">|</span>
-53:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">method_of</span>[<span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>]
-54:         <span class="ruby-identifier">no_need_methods</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">meth</span>
-55:       <span class="ruby-keyword kw">end</span>
-56:     <span class="ruby-keyword kw">end</span>
-57: 
-58:     <span class="ruby-identifier">parent_mod</span>.<span class="ruby-identifier">module_eval</span> <span class="ruby-keyword kw">do</span>
-59:       <span class="ruby-comment cmt"># renate method.</span>
-60:       <span class="ruby-identifier">method_of</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
-61:         <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">TrueClass</span>
-62:         <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">val</span>, <span class="ruby-identifier">key</span>
-63:         <span class="ruby-identifier">undef_method</span> <span class="ruby-identifier">key</span>
-64:       <span class="ruby-keyword kw">end</span>
-65:       <span class="ruby-identifier">no_need_methods</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">meth</span><span class="ruby-operator">|</span>
-66:         <span class="ruby-identifier">undef_method</span> <span class="ruby-identifier">meth</span>
-67:       <span class="ruby-keyword kw">end</span>
-68:     <span class="ruby-keyword kw">end</span>
-69: 
-70:     <span class="ruby-identifier">parent_mod</span>
-71:   <span class="ruby-keyword kw">end</span></pre></div>
+<p class="source_link" id="M000002-show-link"><a onclick="toggle('M000002-source'); toggleText('M000002-link'); return false;" href="#" id="M000002-link">Show source...</a></p><div class="source" id="M000002-source"><pre>    <span class="ruby-comment cmt"># File lib/function_importer.rb, line 39</span>
+39:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_export_module</span> <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+40:     <span class="ruby-identifier">parent_mod</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
+41: 
+42:     <span class="ruby-identifier">method_of</span> = {};
+43:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+44:     <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hash</span>
+45:       <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+46:         <span class="ruby-identifier">method_of</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">val</span>
+47:       <span class="ruby-keyword kw">end</span>
+48:     <span class="ruby-keyword kw">else</span>
+49:       <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> 
+50:         <span class="ruby-identifier">method_of</span>[<span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-keyword kw">true</span>
+51:       <span class="ruby-keyword kw">end</span>
+52:     <span class="ruby-keyword kw">end</span>
+53: 
+54:     <span class="ruby-identifier">no_need_methods</span> = []
+55:     <span class="ruby-identifier">parent_mod</span>.<span class="ruby-identifier">instance_methods</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">meth</span><span class="ruby-operator">|</span>
+56:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">method_of</span>[<span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>]
+57:         <span class="ruby-identifier">no_need_methods</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">meth</span>
+58:       <span class="ruby-keyword kw">end</span>
+59:     <span class="ruby-keyword kw">end</span>
+60: 
+61:     <span class="ruby-identifier">orig_mod</span> = <span class="ruby-keyword kw">self</span>
+62:     <span class="ruby-identifier">parent_mod</span>.<span class="ruby-identifier">module_eval</span> <span class="ruby-keyword kw">do</span>
+63:       <span class="ruby-comment cmt"># renate method.</span>
+64:       <span class="ruby-identifier">method_of</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+65:         <span class="ruby-keyword kw">begin</span>
+66:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">NameError</span>, <span class="ruby-node">&quot;no such method #{key} exist in #{orig_mod}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">instance_method</span>(<span class="ruby-identifier">key</span>)
+67:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-operator">::</span><span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+68:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">NameError</span>, <span class="ruby-node">&quot;no such method #{key} exist in #{orig_mod}&quot;</span>
+69:         <span class="ruby-keyword kw">end</span>
+70:         <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">TrueClass</span>
+71:         <span class="ruby-identifier">alias_method</span> <span class="ruby-identifier">val</span>, <span class="ruby-identifier">key</span>
+72:         <span class="ruby-identifier">undef_method</span> <span class="ruby-identifier">key</span>
+73:       <span class="ruby-keyword kw">end</span>
+74:       <span class="ruby-identifier">no_need_methods</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">meth</span><span class="ruby-operator">|</span>
+75:         <span class="ruby-identifier">undef_method</span> <span class="ruby-identifier">meth</span>
+76:       <span class="ruby-keyword kw">end</span>
+77:     <span class="ruby-keyword kw">end</span>
+78: 
+79:     <span class="ruby-identifier">parent_mod</span>
+80:   <span class="ruby-keyword kw">end</span></pre></div>
 </div>
 
 <a class="small" name="M000001"><br/></a>
@@ -458,13 +466,13 @@ Example:
   end
 </pre>
 
-<p class="source_link" id="M000001-show-link"><a onclick="toggle('M000001-source'); toggleText('M000001-link'); return false;" href="#" id="M000001-link">Show source...</a></p><div class="source" id="M000001-source"><pre>    <span class="ruby-comment cmt"># File lib/function_importer.rb, line 29</span>
-29:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">export</span> <span class="ruby-identifier">context</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
-30:     <span class="ruby-identifier">parent_mod</span> = <span class="ruby-identifier">create_export_module</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-31:     <span class="ruby-identifier">context</span>.<span class="ruby-identifier">module_eval</span> <span class="ruby-keyword kw">do</span>
-32:       <span class="ruby-identifier">include</span> <span class="ruby-identifier">parent_mod</span>
-33:     <span class="ruby-keyword kw">end</span>
-34:   <span class="ruby-keyword kw">end</span></pre></div>
+<p class="source_link" id="M000001-show-link"><a onclick="toggle('M000001-source'); toggleText('M000001-link'); return false;" href="#" id="M000001-link">Show source...</a></p><div class="source" id="M000001-source"><pre>    <span class="ruby-comment cmt"># File lib/function_importer.rb, line 32</span>
+32:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">export</span> <span class="ruby-identifier">context</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+33:     <span class="ruby-identifier">parent_mod</span> = <span class="ruby-identifier">create_export_module</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+34:     <span class="ruby-identifier">context</span>.<span class="ruby-identifier">module_eval</span> <span class="ruby-keyword kw">do</span>
+35:       <span class="ruby-identifier">include</span> <span class="ruby-identifier">parent_mod</span>
+36:     <span class="ruby-keyword kw">end</span>
+37:   <span class="ruby-keyword kw">end</span></pre></div>
 </div>
 
 
